@@ -4,20 +4,20 @@ global:
   license:
     secret:
       devOps: devops-secret
- 
+
 pingfederate-admin:
   enabled: true
- 
+
   image:
     name: pingfederate
     tag: "latest"
     pullPolicy: IfNotPresent
- 
+
   secretVolumes:
     pingfederate-license:
       items:
         pingfederate.lic: /opt/in/instance/server/default/conf/pingfederate.lic
- 
+
   container:
     resources:
       requests:
@@ -26,7 +26,7 @@ pingfederate-admin:
       limits:
         cpu: 2
         memory: 4Gi
- 
+
   envs:
     SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
     SERVER_PROFILE_PATH: "baseline/pingfederate"
@@ -35,36 +35,13 @@ pingfederate-admin:
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
 
-    # Passwords injected from Kubernetes secret
-    PING_IDENTITY_PASSWORD:
-      secretKeyRef:
-        name: ping-admin-secrets
-        key: PING_IDENTITY_PASSWORD
-    administrativeAccounts_items_Administrator_password:
-      secretKeyRef:
-        name: ping-admin-secrets
-        key: PING_IDENTITY_PASSWORD
-    passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value:
-      secretKeyRef:
-        name: ping-admin-secrets
-        key: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value
-    PRIVATE_KEYSTORE_PIN:
-      secretKeyRef:
-        name: ping-admin-secrets
-        key: PRIVATE_KEYSTORE_PIN
-    keyPairs_signing_items_devsigningcert_devsigningcert_password:
-      secretKeyRef:
-        name: ping-admin-secrets
-        key: keyPairs_signing_items_devsigningcert_devsigningcert_password
-    passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value:
-      secretKeyRef:
-        name: ping-admin-secrets
-        key: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value
+  # Inject all passwords directly from the Kubernetes secret
+  envFromSecret:
+    - name: ping-admin-secrets
 
- 
   workload:
     type: Deployment
- 
+
   services:
     https:
       enabled: true
