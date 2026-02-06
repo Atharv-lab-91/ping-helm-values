@@ -9,7 +9,8 @@ pingfederate-admin:
   enabled: true
 
   image:
-    repository: pingidentity/pingfederate
+    repository: pingidentity
+    name: pingfederate
     tag: "13.0.0-alpine_3.23.3-al17-edge"
     pullPolicy: IfNotPresent
 
