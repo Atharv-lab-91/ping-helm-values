@@ -34,6 +34,33 @@ pingfederate-admin:
     PING_IDENTITY_ACCEPT_EULA: "YES"
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
+
+    # Passwords injected from Kubernetes secret
+    PING_IDENTITY_PASSWORD:
+      secretKeyRef:
+        name: ping-admin-secrets
+        key: PING_IDENTITY_PASSWORD
+    administrativeAccounts_items_Administrator_password:
+      secretKeyRef:
+        name: ping-admin-secrets
+        key: PING_IDENTITY_PASSWORD
+    passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value:
+      secretKeyRef:
+        name: ping-admin-secrets
+        key: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value
+    PRIVATE_KEYSTORE_PIN:
+      secretKeyRef:
+        name: ping-admin-secrets
+        key: PRIVATE_KEYSTORE_PIN
+    keyPairs_signing_items_devsigningcert_devsigningcert_password:
+      secretKeyRef:
+        name: ping-admin-secrets
+        key: keyPairs_signing_items_devsigningcert_devsigningcert_password
+    passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value:
+      secretKeyRef:
+        name: ping-admin-secrets
+        key: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value
+
  
   workload:
     type: Deployment
