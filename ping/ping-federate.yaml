@@ -43,8 +43,8 @@ pingfederate-admin:
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
 
   # Inject all passwords directly from the Kubernetes secret
-  envFromSecret:
-    - name: ping-admin-secrets
+#  envFromSecret:
+#    - name: ping-admin-secrets
 
   workload:
     type: Deployment
