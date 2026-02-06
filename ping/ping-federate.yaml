@@ -18,7 +18,7 @@ pingfederate-admin:
     secret:
       name: pingfederate-license-new
       items:
-        pingfederate.lic: /opt/in/instance/server/default/conf/pingfederate.lic
+        pingfederate.lic: /opt/out/instance/server/default/conf/pingfederate.lic
 
   envs:
     SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
