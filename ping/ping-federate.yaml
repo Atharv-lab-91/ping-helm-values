@@ -26,14 +26,13 @@ pingfederate-admin:
       limits:
         cpu: 2
         memory: 6Gi
-
-    # Startup probe: wait longer for PingFederate to initialize
+    # Optional: increase startup probe to give PingFederate time to start
     startupProbe:
       exec:
-        command: ["/opt/liveness.sh"]
-      initialDelaySeconds: 120   # wait 2 minutes before first check
-      periodSeconds: 10
-      failureThreshold: 30       # allow ~5 minutes for startup
+        command:
+          - "/opt/liveness.sh"
+      periodSeconds: 15
+      failureThreshold: 60
 
   envs:
     SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
@@ -43,38 +42,9 @@ pingfederate-admin:
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
 
-  # Explicitly inject all passwords from the Kubernetes secret
-  env:
-    - name: PING_IDENTITY_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: ping-admin-secrets
-          key: PING_IDENTITY_PASSWORD
-    - name: administrativeAccounts_items_Administrator_password
-      valueFrom:
-        secretKeyRef:
-          name: ping-admin-secrets
-          key: PING_IDENTITY_PASSWORD
-    - name: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value
-      valueFrom:
-        secretKeyRef:
-          name: ping-admin-secrets
-          key: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value
-    - name: PRIVATE_KEYSTORE_PIN
-      valueFrom:
-        secretKeyRef:
-          name: ping-admin-secrets
-          key: PRIVATE_KEYSTORE_PIN
-    - name: keyPairs_signing_items_devsigningcert_devsigningcert_password
-      valueFrom:
-        secretKeyRef:
-          name: ping-admin-secrets
-          key: keyPairs_signing_items_devsigningcert_devsigningcert_password
-    - name: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value
-      valueFrom:
-        secretKeyRef:
-          name: ping-admin-secrets
-          key: passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value
+  # Inject all passwords directly from the Kubernetes secret
+  envFromSecret:
+    - name: ping-admin-secrets
 
   workload:
     type: Deployment
