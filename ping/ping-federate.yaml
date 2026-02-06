@@ -16,7 +16,7 @@ pingfederate-admin:
 
   license:
     secret:
-      name: pingfederate-license
+      name: pingfederate-license-new
       items:
         pingfederate.lic: /opt/out/instance/server/default/conf/pingfederate.lic
 
