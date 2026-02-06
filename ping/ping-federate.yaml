@@ -36,8 +36,13 @@ pingfederate-admin:
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
 
   # Inject all passwords directly from the Kubernetes secret
-  envFromSecret:
-    - name: ping-admin-secrets
+  secrets:
+    PING_IDENTITY_PASSWORD: "ping-admin-secrets:PING_IDENTITY_PASSWORD"
+    administrativeAccounts_items_Administrator_password: "ping-admin-secrets:PING_IDENTITY_PASSWORD"
+    passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value: "ping-admin-secrets:passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Confirm_Password_value"
+    PRIVATE_KEYSTORE_PIN: "ping-admin-secrets:PRIVATE_KEYSTORE_PIN"
+    keyPairs_signing_items_devsigningcert_devsigningcert_password: "ping-admin-secrets:keyPairs_signing_items_devsigningcert_devsigningcert_password"
+    passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value: "ping-admin-secrets:passwordCredentialValidators_items_simple_configuration_tables_rows_fields_Password_value"
 
   workload:
     type: Deployment
