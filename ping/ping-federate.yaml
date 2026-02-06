@@ -10,7 +10,7 @@ pingfederate-admin:
  
   image:
     repository: pingidentity/pingfederate
-    tag: "latest"
+    tag: "13.0.0-alpine_3.23.3-al17-edge"
     pullPolicy: IfNotPresent
  
   license:
