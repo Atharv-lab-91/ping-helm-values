@@ -9,7 +9,7 @@ pingfederate-admin:
   enabled: true
  
   image:
-    repository: pingidentity
+    repository: pingidentity/pingfederate
     tag: "latest"
     pullPolicy: IfNotPresent
  
