@@ -54,7 +54,7 @@ pingfederate-admin:
   envFrom:
     - secretRef:
         name: pf-admin-password 
-        optional: true
+      
 
   workload:
     type: Deployment
