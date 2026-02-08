@@ -1,9 +1,6 @@
 global:
   ingress:
     enabled: true
-  license:
-    secret:
-      devOps: devops-secret
 
 pingfederate-admin:
   enabled: true
