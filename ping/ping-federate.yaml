@@ -3,9 +3,9 @@ global:
     enabled: true 
   license:
     secret:
-      devOps: null  # disables devops-secret
+      devOps: false  # disables devops-secret
   git:
-    secret: null  # disables default git secret
+    secret: false  # disables default git secret
 
 pingfederate-admin:
   enabled: true
