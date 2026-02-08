@@ -1,23 +1,25 @@
 # myvalues.yaml
 # Overrides to avoid using devops-secret
-
 license:
   secret:
     devOps: null  # disables the devops-secret reference
 
-# Optional: disable Git secret if you don't use it
 git:
   secret:
     name: null
 
-# Optional: remove any extra envFrom configMaps you don't need
 env:
   container:
     envFrom: []  # ensures no extra configMaps/secrets are added
 
-# You can keep your other values from ping-federate.yaml as is
-# Example: admin password
-administrativeAccounts:
-  items:
-    - username: Administrator
-      password: "Atharv@123PG09"  # or read from existing secret if preferred
+# Admin credentials
+pingfederate-admin:
+  administrativeAccounts:
+    items:
+      - username: Administrator
+        password: "Atharv@123PG09"
+
+  # Tell Helm to create the secret with this password
+  adminPasswordSecret:
+    name: pf-admin-password
+    key: PING_IDENTITY_ADMIN_PASSWORD
