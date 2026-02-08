@@ -1,6 +1,7 @@
 global:
   ingress:
     enabled: true 
+  envFromSecrets: []
 
 pingfederate-admin:
   enabled: true
