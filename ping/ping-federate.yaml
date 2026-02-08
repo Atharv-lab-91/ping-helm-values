@@ -1,12 +1,15 @@
 global:
   ingress:
     enabled: true
+  license:
+    secret:
+      devOps: devops-secret 
 
 pingfederate-admin:
   enabled: true
-  envFrom:
-    - secretRef:
-        name: devops-secret
+#@  envFrom:
+#    - secretRef:
+#        name: devops-secret
   # Inject all passwords directly from the Kubernetes secret
 #  adminPasswordSecret:
 #    name: pingfederate-admin-password
