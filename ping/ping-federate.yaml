@@ -1,12 +1,11 @@
 global:
   ingress:
     enabled: true 
-#  envFromSecrets: []
   license:
     secret:
       devOps: ""  # disables devops-secret
   git:
-    secret: ""
+    secret: ""   # disables default git secret
 
 pingfederate-admin:
   enabled: true
@@ -54,8 +53,7 @@ pingfederate-admin:
 
   envFrom:
     - secretRef:
-        name: pf-admin-password 
-      
+        name: pf-admin-password
 
   workload:
     type: Deployment
