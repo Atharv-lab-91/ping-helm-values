@@ -1,11 +1,11 @@
 global:
   ingress:
     enabled: true 
-  license:
-    secret:
-      devOps: null  # disables devops-secret
-  git:
-    secret: null  # disables default git secret
+#  license:
+#    secret:
+#      devOps: null  # disables devops-secret
+#  git:
+#    secret: null  # disables default git secret
 
 pingfederate-admin:
   enabled: true
