@@ -44,7 +44,7 @@ pingfederate-admin:
 
   # Inject all passwords directly from the Kubernetes secret
   envFromSecret:
-    - name: pingfederate-admin-password
+    - pingfederate-admin-password
 
   workload:
     type: Deployment
