@@ -4,6 +4,9 @@ global:
 
 pingfederate-admin:
   enabled: true
+  envFrom:
+    - secretRef:
+        name: devops-secret
   # Inject all passwords directly from the Kubernetes secret
 #  adminPasswordSecret:
 #    name: pingfederate-admin-password
