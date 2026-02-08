@@ -2,10 +2,11 @@ global:
   ingress:
     enabled: true 
 #  envFromSecrets: []
-license:
-  # Disable the default license secret injection
-  secret:
-    devOps: ""  # ensures devops-secret is not used
+  license:
+    secret:
+      devOps: ""  # disables devops-secret
+  git:
+    secret: ""
 
 pingfederate-admin:
   enabled: true
