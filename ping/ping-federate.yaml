@@ -1,14 +1,11 @@
 global:
   ingress:
-    enabled: true
-  license:
-    secret:
-      devOps: devops-secret 
+    enabled: true 
 
 pingfederate-admin:
   enabled: true
 #@  envFrom:
-#    - secretRef:
+#    - secretRef:s
 #        name: devops-secret
   # Inject all passwords directly from the Kubernetes secret
 #  adminPasswordSecret:
@@ -49,8 +46,12 @@ pingfederate-admin:
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
 
+  envFrom:
+    - secretRef:
+        name: pf-admin-password 
+
   workload:
-    type: Deployment
+    type: Deployments
 
   services:
     https:
