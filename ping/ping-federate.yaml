@@ -5,9 +5,9 @@ global:
 pingfederate-admin:
   enabled: true
   # Inject all passwords directly from the Kubernetes secret
-  adminPasswordSecret:
-    name: pingfederate-admin-password
-    key: administrativeAccounts_items_Administrator_password
+#  adminPasswordSecret:
+#    name: pingfederate-admin-password
+#    key: administrativeAccounts_items_Administrator_password
 
   image:
     name: pingfederate
