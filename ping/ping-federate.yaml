@@ -51,7 +51,7 @@ pingfederate-admin:
         name: pf-admin-password 
 
   workload:
-    type: Deployments
+    type: Deployment
 
   services:
     https:
