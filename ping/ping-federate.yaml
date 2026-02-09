@@ -7,6 +7,12 @@ global:
 #  git:
 #    secret: null  # disables default git secret
 
+  container:
+    envFrom:
+      - secretRef:
+          name: pf-admin-password
+          optional: false
+
 pingfederate-admin:
   enabled: true
 
@@ -55,10 +61,10 @@ pingfederate-admin:
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
 
-  envFrom:
-    - secretRef:
-        name: pf-admin-password
-        optional: true
+#  envFrom:
+#    - secretRef:
+#        name: pf-admin-password
+#        optional: true
 
   workload:
     type: Deployment
