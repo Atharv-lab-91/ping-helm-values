@@ -14,7 +14,7 @@ pingdirectory:
     pullPolicy: IfNotPresent
  
   secretVolumes:
-    pingdirectory-license:
+    pd-license:
       items:
         pingdirectory.lic: /run/secrets/pingdirectory.lic
  

@@ -33,7 +33,7 @@ pingfederate-admin:
     pullPolicy: IfNotPresent
 
   secretVolumes:
-    pingfederate-license:
+    pf-license:
       items:
         pingfederate.lic: /opt/in/instance/server/default/conf/pingfederate.lic
 
