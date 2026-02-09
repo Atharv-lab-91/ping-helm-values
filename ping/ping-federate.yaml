@@ -67,7 +67,7 @@ pingfederate-admin:
      valueFrom:
       secretKeyRef:
         name: pf-admin-password
-        key: PING_IDENTITY_ADMIN_PASSWORD
+        key: PING_IDENTITY_PASSWORD
 #  envFrom:
 #    - secretRef:
 #        name: pf-admin-password
