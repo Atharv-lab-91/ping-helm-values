@@ -74,6 +74,7 @@ pingfederate-admin:
   envFrom:
     - secretRef:
         name: pf-admin-password
+        key: PING_IDENTITY_PASSWORD
         optional: true
 
   workload:
