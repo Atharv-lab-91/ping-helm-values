@@ -7,11 +7,11 @@ global:
 #  git:
 #    secret: null  # disables default git secret
 
-  container:
-    envFrom:
-      - secretRef:
-          name: pf-admin-password
-          optional: false
+#  container:
+#    envFrom:
+#      - secretRef:
+#          name: pf-admin-password
+#          optional: false
 
 pingfederate-admin:
   enabled: true
@@ -60,6 +60,7 @@ pingfederate-admin:
     PING_IDENTITY_ACCEPT_EULA: "YES"
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
+    PING_IDENTITY_PASSWORD: "SecurePassword123!"
 
 #  envFrom:
 #    - secretRef:
