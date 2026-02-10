@@ -26,9 +26,11 @@ pingdirectory:
     MAKELDIF_USERS: "100"
     ENABLE_INSECURE_REMOTE_EXTENSIONS: "true"
 
-  envFrom:
-    - secretRef:
-        name: pingdirectory-root-password
+  rootUserPasswordSecret:
+    name: pingdirectory-root-password
+#  envFrom:
+#    - secretRef:
+#        name: pingdirectory-root-password
 
   container:
     resources:
