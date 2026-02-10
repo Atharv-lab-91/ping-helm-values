@@ -12,6 +12,9 @@ pingdirectory:
     repository: pingidentity
     tag: "latest"
     pullPolicy: IfNotPresent
+
+  rootUserPasswordSecret:
+    name: pingdirectory-root-password
  
   secretVolumes:
     pingdirectory-license:
@@ -26,8 +29,8 @@ pingdirectory:
     MAKELDIF_USERS: "100"
     ENABLE_INSECURE_REMOTE_EXTENSIONS: "true"
 
-  rootUserPasswordSecret:
-    name: pingdirectory-root-password
+#  rootUserPasswordSecret:
+#    name: pingdirectory-root-password
 #  envFrom:
 #    - secretRef:
 #        name: pingdirectory-root-password
