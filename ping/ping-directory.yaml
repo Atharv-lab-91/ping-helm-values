@@ -15,6 +15,7 @@ pingdirectory:
 
   rootUserPasswordSecret:
     name: pingdirectory-root-password
+    key: root-user-password
  
   secretVolumes:
     pingdirectory-license:
