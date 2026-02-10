@@ -50,8 +50,8 @@ pingfederate-admin:
       exec:
         command:
           - "/opt/liveness.sh"
-      periodSeconds: 15
-      failureThreshold: 60
+      periodSeconds: 30
+      failureThreshold: 6
 
   envs:
 

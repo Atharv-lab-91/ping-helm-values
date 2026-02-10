@@ -45,6 +45,12 @@ pingdirectory:
       limits:
         cpu: 2
         memory: 8Gi
+    startupProbe:
+      exec:
+        command:
+          - "/opt/liveness.sh"
+      periodSeconds: 30
+      failureThreshold: 6
  
   workload:
     type: StatefulSet
