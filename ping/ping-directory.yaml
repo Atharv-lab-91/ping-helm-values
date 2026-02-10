@@ -11,9 +11,10 @@ pingdirectory:
   enabled: true
 
   image:
-    repository: pingidentity/pingdirectory
-    tag: "11.0.0.1"
+    repository: pingdirectory
+    tag: "latest"
     pullPolicy: IfNotPresent
+    
   secretVolumes:
     pingdirectory-license:
       items:
