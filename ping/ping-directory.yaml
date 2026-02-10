@@ -12,10 +12,6 @@ pingdirectory:
     repository: pingidentity
     tag: "latest"
     pullPolicy: IfNotPresent
-
-  rootUserPasswordSecret:
-    name: pingdirectory-root-password
-    key: root-user-password
  
   secretVolumes:
     pingdirectory-license:
@@ -23,20 +19,12 @@ pingdirectory:
         pingdirectory.lic: /run/secrets/pingdirectory.lic
  
   envs:
-    SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
+    SERVER_PROFILE_URL: "https://github.com/saurabhTSB/ping-server-profile-tsb.git"
     SERVER_PROFILE_PATH: "baseline/pingdirectory"
-    SERVER_PROFILE_BRANCH: "main"
+    SERVER_PROFILE_BRANCH: "master"
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MAKELDIF_USERS: "100"
-    ENABLE_INSECURE_REMOTE_EXTENSIONS: "true"
-    ALLOW_WEAK_ROOT_USER_PASSWORD: "true"
-
-#  rootUserPasswordSecret:
-#    name: pingdirectory-root-password
-#  envFrom:
-#    - secretRef:
-#        name: pingdirectory-root-password
-
+ 
   container:
     resources:
       requests:
@@ -45,12 +33,6 @@ pingdirectory:
       limits:
         cpu: 2
         memory: 8Gi
-    startupProbe:
-      exec:
-        command:
-          - "/opt/liveness.sh"
-      periodSeconds: 30
-      failureThreshold: 6
  
   workload:
     type: StatefulSet
@@ -98,5 +80,5 @@ pingdataconsole:
   enabled: true
   defaultLogin:
     server:
-      host: ping-directory-pingdirectory
+      host: ping-pingdirectory
       port: 636
