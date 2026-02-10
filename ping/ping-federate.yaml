@@ -70,7 +70,7 @@ pingfederate-admin:
 #          key: PING_IDENTITY_PASSWORD
 
   postStartScripts:
-    enabled: true
+    enabled: false 
 #  envFrom:
 #    - secretRef:
 #        name: pf-admin-password
