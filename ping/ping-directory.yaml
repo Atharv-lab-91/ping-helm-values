@@ -24,6 +24,7 @@ pingdirectory:
     SERVER_PROFILE_BRANCH: "main"
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MAKELDIF_USERS: "100"
+    ENABLE_INSECURE_REMOTE_EXTENSIONS: "true"
  
   container:
     resources:
