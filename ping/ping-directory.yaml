@@ -1,58 +1,45 @@
 global:
   ingress:
     enabled: true
-
-  license:
-    secret:
-      devOps: devops-secret
-
-
+#  license:
+#    secret:
+#      devOps: devops-secret
+ 
 pingdirectory:
   enabled: true
-
+ 
   image:
-    repository: pingdirectory
+    repository: pingidentity
     tag: "latest"
     pullPolicy: IfNotPresent
-    
+ 
   secretVolumes:
     pingdirectory-license:
       items:
         pingdirectory.lic: /run/secrets/pingdirectory.lic
-
+ 
   envs:
     SERVER_PROFILE_URL: "https://github.com/saurabhTSB/ping-server-profile-tsb.git"
     SERVER_PROFILE_PATH: "baseline/pingdirectory"
     SERVER_PROFILE_BRANCH: "master"
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MAKELDIF_USERS: "100"
-    ENABLE_INSECURE_REMOTE_EXTENSIONS: "true"
-    ALLOW_WEAK_ROOT_USER_PASSWORD: "true"
-
+ 
   container:
     resources:
       requests:
-        cpu: 500m
+        cpu: 50m
         memory: 2Gi
       limits:
         cpu: 2
         memory: 8Gi
-
-    startupProbe:
-      enabled: true
-      initialDelaySeconds: 120
-      periodSeconds: 10
-      failureThreshold: 30
-
+ 
   workload:
     type: StatefulSet
-
     podSecurityContext:
       fsGroup: 9031
-
     statefulSet:
       podManagementPolicy: OrderedReady
-
       persistentvolume:
         enabled: true
         volumes:
@@ -62,7 +49,7 @@ pingdirectory:
               resources:
                 requests:
                   storage: 8Gi
-
+ 
   service:
     https:
       enabled: true
@@ -70,33 +57,28 @@ pingdirectory:
       servicePort: 1443
       containerPort: 1443
       nodePort: 31443
-
     ldap:
       enabled: true
       type: NodePort
       servicePort: 1389
       containerPort: 1389
       nodePort: 31389
-
     ldaps:
       enabled: true
       type: NodePort
       servicePort: 1636
       containerPort: 1636
       nodePort: 31636
-
     rest:
       enabled: true
       type: NodePort
       servicePort: 2443
       containerPort: 2443
       nodePort: 32443
-
-
+ 
 pingdataconsole:
   enabled: true
-
   defaultLogin:
     server:
-      host: ping-directory-pingdirectory
+      host: ping-pingdirectory
       port: 636
