@@ -28,7 +28,7 @@ pingdirectory:
   container:
     resources:
       requests:
-        cpu: 50m
+        cpu: 1
         memory: 2Gi
       limits:
         cpu: 2
