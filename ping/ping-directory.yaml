@@ -94,7 +94,6 @@ pingdataconsole:
       type: ClusterIP
       servicePort: 8443
       containerPort: 8443
-      serviceName: ping-directory-pingdataconsole
 
   ingress:
     enabled: true
