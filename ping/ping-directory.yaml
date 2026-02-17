@@ -1,9 +1,12 @@
 global:
-  ingress:
-    enabled: true
-#  license:
-#    secret:
-#      devOps: devops-secret
+  public:
+    host:
+      port:
+        PD_CONSOLE:
+          pingdataconsole:
+            serviceName: ping-directory-pingdataconsole
+            servicePort: 8443
+
  
 pingdirectory:
   enabled: true
