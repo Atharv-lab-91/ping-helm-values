@@ -91,16 +91,16 @@ pingdataconsole:
       type: ClusterIP
       servicePort: 8443
       containerPort: 8443
+      serviceName: ping-directory-pingdataconsole
 
   ingress:
     enabled: true
     ingressClassName: nginx
     hosts:
-      - host: my-pdc.local
+      - host: pdc.local
         paths:
           - path: /
             pathType: Prefix
-    tls: []
 
   defaultLogin:
     server:
