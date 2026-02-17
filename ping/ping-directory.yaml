@@ -1,38 +1,30 @@
 global:
-  public:
-    host:
-      port:
-        PD_CONSOLE:
-          pingdataconsole:
-            backend:
-              serviceName: ping-directory-pingdataconsole
-              servicePort: 8443
-        PD_ENGINE:
-          pingdirectory:
-            backend:
-              serviceName: ping-directory-pingdirectory
-              servicePort: 636
-
+  ingress:
+    enabled: true
+#  license:
+#    secret:
+#      devOps: devops-secret
+ 
 pingdirectory:
   enabled: true
-
+ 
   image:
     repository: pingidentity
     tag: "latest"
     pullPolicy: IfNotPresent
-
+ 
   secretVolumes:
     pingdirectory-license:
       items:
         pingdirectory.lic: /run/secrets/pingdirectory.lic
-
+ 
   envs:
     SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
     SERVER_PROFILE_PATH: "baseline/pingdirectory"
     SERVER_PROFILE_BRANCH: "main"
     PING_IDENTITY_ACCEPT_EULA: "YES"
     MAKELDIF_USERS: "100"
-
+ 
   container:
     resources:
       requests:
@@ -47,7 +39,7 @@ pingdirectory:
           - "/opt/liveness.sh"
       periodSeconds: 30
       failureThreshold: 6
-
+ 
   workload:
     type: StatefulSet
     podSecurityContext:
@@ -63,7 +55,7 @@ pingdirectory:
               resources:
                 requests:
                   storage: 8Gi
-
+ 
   service:
     https:
       enabled: true
@@ -89,27 +81,10 @@ pingdirectory:
       servicePort: 2443
       containerPort: 2443
       nodePort: 32443
-
+ 
 pingdataconsole:
   enabled: true
-
-  service:
-    https:
-      enabled: true
-      type: ClusterIP
-      servicePort: 8443
-      containerPort: 8443
-
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      - host: pdc.local
-        paths:
-          - path: /
-            pathType: Prefix
-
   defaultLogin:
     server:
-      host: ping-directory-pingdirectory
+      host: ping-pingdirectory
       port: 636
