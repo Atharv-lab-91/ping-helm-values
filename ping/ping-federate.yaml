@@ -1,17 +1,6 @@
 global:
   ingress:
     enabled: true 
-#  license:
-#    secret:
-#      devOps: null  # disables devops-secret
-#  git:
-#    secret: null  # disables default git secret
-
-#  container:
-#    envFrom:
-#      - secretRef:
-#          name: pf-admin-password
-#          optional: false
 
 pingfederate-admin:
   enabled: true
