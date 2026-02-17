@@ -50,7 +50,7 @@ pingfederate-admin:
     PING_IDENTITY_ACCEPT_EULA: "YES"
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
-    PING_IDENTITY_PASSWORD: "SecurePassword123!"
+#    PING_IDENTITY_PASSWORD: "SecurePassword123!"
 #  env:    
 #    - name: PING_IDENTITY_PASSWORD
 #      valueFrom:
@@ -58,8 +58,8 @@ pingfederate-admin:
 #          name: pf-admin-password
 #          key: PING_IDENTITY_PASSWORD
 
-  postStartScripts:
-    enabled: false 
+  # postStartScripts:
+  #   enabled: false 
 #  envFrom:
 #    - secretRef:
 #        name: pf-admin-password
