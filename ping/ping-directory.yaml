@@ -4,9 +4,8 @@ global:
       port:
         PD_CONSOLE:
           pingdataconsole:
-            backend:
-              serviceName: ping-directory-pingdataconsole
-              servicePort: 8443
+            serviceName: ping-directory-pingdataconsole
+            servicePort: 8443
 
 pingdirectory:
   enabled: true
