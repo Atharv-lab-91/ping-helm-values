@@ -84,7 +84,25 @@ pingdirectory:
  
 pingdataconsole:
   enabled: true
+
+  service:
+    https:
+      enabled: true
+      type: ClusterIP
+      servicePort: 8443
+      containerPort: 8443
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - host: my-pdc.local
+        paths:
+          - path: /
+            pathType: Prefix
+    tls: []
+
   defaultLogin:
     server:
-      host: ping-pingdirectory
+      host: ping-directory-pingdirectory
       port: 636
