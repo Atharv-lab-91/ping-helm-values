@@ -3,10 +3,15 @@ global:
     host:
       port:
         PD_CONSOLE:
+          pingdirectory:
+            backend:
+              serviceName: ping-directory-pingdirectory
+              servicePort: 636
           pingdataconsole:
             backend:
               serviceName: ping-directory-pingdataconsole
               servicePort: 8443
+
 
 
  
