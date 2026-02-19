@@ -46,7 +46,7 @@ pingfederate-admin:
     PING_IDENTITY_ACCEPT_EULA: "YES"
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
-    PING_IDENTITY_PASSWORD: "SecurePassword123!"
+    # PING_IDENTITY_PASSWORD: "SecurePassword123!"
 
   workload:
     type: Deployment
