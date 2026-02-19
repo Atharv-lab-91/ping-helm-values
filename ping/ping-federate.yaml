@@ -48,7 +48,20 @@ pingfederate-admin:
     # PING_IDENTITY_PASSWORD: "SecurePassword123!"
 
   workload:
-    type: Deployment
+    type: StatefulSet
+    podSecurityContext:
+      fsGroup: 9999
+    statefulSet:
+      podManagementPolicy: OrderedReady
+      persistentvolume:
+        enabled: true
+        volumes:
+          out-dir:
+            mountPath: /opt/out
+            persistentVolumeClaim:
+              resources:
+                requests:
+                  storage: 8Gi
 
   services:
     https:
