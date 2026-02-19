@@ -31,22 +31,21 @@ pingfederate-admin:
       periodSeconds: 30
       failureThreshold: 6
 
-    # env:    
-    #   PING_IDENTITY_PASSWORD: "SecurePassword123!"
-      # - name: PING_IDENTITY_PASSWORD
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: pf-admin-password
-      #       key: PING_IDENTITY_PASSWORD
+    env:    
+      - name: PING_IDENTITY_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: pf-admin-password
+            key: PING_IDENTITY_PASSWORD
 
   envs:
-    SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
-    SERVER_PROFILE_PATH: "baseline/pingfederate"
-    SERVER_PROFILE_BRANCH: "main"
+    # SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
+    # SERVER_PROFILE_PATH: "baseline/pingfederate"
+    # SERVER_PROFILE_BRANCH: "main"
     PING_IDENTITY_ACCEPT_EULA: "YES"
     PF_ADMIN_PUBLIC_HOSTNAME: "localhost:9999"
     PF_ADMIN_PUBLIC_BASEURL: "https://localhost:9999"
-    PING_IDENTITY_PASSWORD: "SecurePassword123!"
+    # PING_IDENTITY_PASSWORD: "SecurePassword123!"
 
   workload:
     type: Deployment
