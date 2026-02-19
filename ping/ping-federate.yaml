@@ -31,12 +31,12 @@ pingfederate-admin:
       periodSeconds: 30
       failureThreshold: 6
 
-  env:    
-    - name: PING_IDENTITY_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: pf-admin-password
-          key: PING_IDENTITY_PASSWORD
+    env:    
+      - name: PING_IDENTITY_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: pf-admin-password
+            key: PING_IDENTITY_PASSWORD
 
   envs:
     SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
