@@ -17,6 +17,7 @@ pingdirectory:
     pingdirectory-license:
       items:
         pingdirectory.lic: /run/secrets/pingdirectory.lic
+        
  
   envs:
     # SERVER_PROFILE_URL: "https://github.com/Atharv-lab-91/ping-server-profile.git"
